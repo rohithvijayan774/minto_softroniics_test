@@ -9,6 +9,8 @@ class UserProvider with ChangeNotifier {
   final loginKey = "UserLoggedIn";
   final formKey = GlobalKey<FormState>();
   String? userName;
+  final bookingKey = 'BookTable';
+  bool isOccupied = false;
 
   //-----------------For Splash Screen-----------------------------------------
 
@@ -67,7 +69,6 @@ class UserProvider with ChangeNotifier {
       return;
     }
     nameController.clear();
-    print('Logged In');
     notifyListeners();
   }
 
@@ -79,5 +80,12 @@ class UserProvider with ChangeNotifier {
     userName = sharedPref.getString(loginKey);
 
     notifyListeners();
+  }
+
+  //-----------------For Home Screen-----------------------------------------
+
+  bookingTable() async {
+    final sharedPrefs = await SharedPreferences.getInstance();
+    await sharedPrefs.setBool(bookingKey, isOccupied = true);
   }
 }

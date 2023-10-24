@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
+          decoration:const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/Minto-logos_transparent.png'),
             ),
